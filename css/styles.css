@@ -16,6 +16,9 @@
 --card-set-gap: 20px;
 --card-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+ --backdrop-color: rgba(46, 47, 66, 0.4);
+ --modal-color:  #FCFCFC;
+ --modal-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 /*box-sizing*/
 *, ::after,::before{
@@ -62,7 +65,7 @@ h1,h2,h3,h4,h5,h6, ul, li, p {
 .header{
     border-bottom: 1px solid #E7E9FC;
     padding-top: 24px;
-    padding-bottom: 23px;
+    padding-bottom: 20px;
     box-shadow: 0px 2px 1px rgb(46 47 66 / 8%), 0px 1px 1px rgb(46 47 66 / 16%), 0px 1px 6px rgb(46 47 66 / 8%);
 }
 .header-block{
@@ -234,7 +237,6 @@ nav{
     max-height: 600px;
     margin-left: auto;
     margin-right: auto;
-    outline: 1px solid black;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -265,6 +267,43 @@ nav{
     height: 51px;
     
 }
+/* modal window index.html*/
+.modal-backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--backdrop-color) ;
+}
+.modal-backdrop.is-hidden{
+    opacity: 0;
+    pointer-events: none;
+}
+.modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 408px;
+    height: 576px;
+    background-color: var(--modal-color);
+    box-shadow: var(--modal-shadow);
+    border-radius: 4px;
+    padding: 15px;
+}
+.modal-button{
+    position: absolute;    
+    width: 24px;
+    height: 24px;
+    right: 24px;
+    top: 24px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
 /*important-points index.html*/
 .important-points-section{
     padding-top: 120px;
