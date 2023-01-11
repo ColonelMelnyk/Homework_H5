@@ -639,3 +639,16 @@ list-style-type: none;
     box-shadow: 0px 1px 6px rgb(46 47 66 / 0.08), 0px 1px 1px rgb(46 47 66 / 16%), 0px 2px 1px rgb(46 47 66 / 8%);
 
 }
+.image-card::before{
+    content: "14 Stylish and User-Friendly App Design Concepts · Task Manager App · Calorie Tracker App · Exotic Fruit Ecommerce App · Cloud Storage App";
+    display: inline-block;
+    position: absolute;
+    background-color: var(--active-color);
+    width: 360px;
+    height: 300px;
+    opacity: 0;
+    color: var(--light-white-color);
+}
+.image-card:hover::before{
+    opacity: 1;
+}
