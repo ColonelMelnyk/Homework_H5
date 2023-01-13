@@ -15,10 +15,12 @@
 --light-white-color: #F4F4FD;
 --card-set-gap: 20px;
 --card-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
- --backdrop-color: rgba(46, 47, 66, 0.4);
- --modal-color:  #FCFCFC;
- --modal-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+--backdrop-color: rgba(46, 47, 66, 0.4);
+--modal-color:  #FCFCFC;
+--modal-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+--animation-duration: 250ms;
+--animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) ;
 }
 /*box-sizing*/
 *, ::after,::before{
@@ -65,7 +67,7 @@ h1,h2,h3,h4,h5,h6, ul, li, p {
 .header{
     border-bottom: 1px solid #E7E9FC;
     padding-top: 24px;
-    padding-bottom: 20px;
+    padding-bottom: 24px;
     box-shadow: 0px 2px 1px rgb(46 47 66 / 8%), 0px 1px 1px rgb(46 47 66 / 16%), 0px 1px 6px rgb(46 47 66 / 8%);
 }
 .header-block{
@@ -113,7 +115,10 @@ nav{
     font-weight: 800;
     color: var(--title-text-color);
     display: inline-block;
+    transition: color var(--animation-duration) var(--animation-timing-function);
+    
 }
+
 .nav-member{
     list-style-type: none;  
     display: inline-block;  
@@ -145,6 +150,7 @@ nav{
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.02em;
+    transition: color var(--animation-duration) var(--animation-timing-function);
 }
 
 /*footer*/
@@ -222,6 +228,7 @@ nav{
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);;    
     text-decoration: none;
+    transition: background-color var(--animation-duration) var(--animation-timing-function);
     }
  /*-------------index.html styles-------------*/
 /*banner*/
@@ -265,7 +272,10 @@ nav{
     cursor: pointer;
     width: 170px;
     height: 51px;
-    
+    transition-property: background-color, border, box-shadow;
+    transition-duration: var(--animation-duration);
+    transition-timing-function: var(--animation-timing-function);
+
 }
 /* modal window index.html*/
 .modal-backdrop{
@@ -275,10 +285,14 @@ nav{
     height: 100%;
     width: 100%;
     background-color: var(--backdrop-color) ;
+    transition: translate var(--animation-duration) var(--animation-timing-function), opacity var(--animation-duration) var(--animation-timing-function), visibility var(--animation-duration) var(--animation-timing-function);
 }
 .modal-backdrop.is-hidden{
     opacity: 0;
     pointer-events: none;
+}
+.modal-backdrop.is-hidden .modal{
+    transform: translate(-50%, -50%) scale(0.1);
 }
 .modal{
     position: absolute;
@@ -291,6 +305,8 @@ nav{
     box-shadow: var(--modal-shadow);
     border-radius: 4px;
     padding: 15px;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform var(--animation-duration) var(--animation-timing-function), opacity var(--animation-duration) var(--animation-timing-function);
 }
 .modal-button{
     position: absolute;    
@@ -441,6 +457,8 @@ nav{
     justify-content: center;
     border-radius: 50%;
     background-color: var(--active-color);
+    transition: background-color var(--animation-duration) var(--animation-timing-function);
+
 }
 /* Customer section index.html */
 .customer-section{
@@ -475,6 +493,12 @@ nav{
     padding: 16px 32px;
     border-radius: 4px;
     border: 1px solid #8E8F99;
+}
+.customers-link
+.customers-icon{
+    transition-property: background-color, border, fill;
+    transition-duration: var(--animation-duration);
+    transition-timing-function: var(--animation-timing-function);
 }
 /*-------------portfolio.html styles-------------*/
 /*section*/
@@ -520,6 +544,9 @@ list-style-type: none;
     padding-left: 24px;
     padding-right: 24px;
     height: 48px;
+    transition-property: color, background-color, border, border-radius, box-shadow;
+    transition-duration: var(--animation-duration);
+    transition-timing-function: var(--animation-timing-function);
 }
 /*image-list portfolio.html*/
 .image-list{
@@ -577,9 +604,7 @@ list-style-type: none;
 
 
 /*-------------hover and active styles for both pagesб overlays, and stuff-------------*/
-.nav-link:hover{
-    color: var(--active-color);
-}
+
 .nav-link-current{
     color:var(--active-color);
     text-decoration: none;
@@ -597,14 +622,17 @@ list-style-type: none;
     width: 100%;
     border-radius: 2px;
     background-color: var(--active-color);
-    width: 100%;
     height: 4px;
-    margin-top: 24px;
+    margin-top: 28px;
+}
+.nav-link:hover{
+    color: var(--active-color);
 }
 .contacts-link:hover{
     color: var(--active-color);
 }
-.button:hover{
+.button:hover,
+.button:active{
     background: var(--active-color);
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
     border-radius: 4px;
@@ -630,7 +658,7 @@ list-style-type: none;
     background: var(--active-color);
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
     border-radius: 4px;
-     border: var(--active-color)
+    border: var(--active-color)
 }
 .portfolio-button:hover{
     color: var(--standard-white-color);
@@ -643,6 +671,9 @@ list-style-type: none;
 .image-card:active{
     box-shadow: 0px 1px 6px rgb(46 47 66 / 0.08), 0px 1px 1px rgb(46 47 66 / 16%), 0px 2px 1px rgb(46 47 66 / 8%);
 
+}
+.overlay-portion{
+    
 }
 .overlay-text{
     position: absolute;
@@ -660,8 +691,10 @@ list-style-type: none;
      font-size: 16px;
      line-height: 1.5;
      letter-spacing: 0.02em;
+     
  }
- .image-card:hover .overlay-text{
+ .image-card:hover .overlay-text,
+ .image-card:active .overlay-text{
      display: inline-block;
  }
 
