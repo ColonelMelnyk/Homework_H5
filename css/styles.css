@@ -687,8 +687,8 @@ list-style-type: none;
     background-color: var(--active-color);
     opacity: 0;
     transform: translateY(100%);
-     transition: transform var(--animation-duration) var(--animation-timing-function),
-     opacity var(--animation-duration) var(--animation-timing-function);
+    transition: transform var(--animation-duration) var(--animation-timing-function),
+    opacity var(--animation-duration) var(--animation-timing-function);
     }
 .overlay-text{
      color: var(--light-white-color);
